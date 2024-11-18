@@ -1,0 +1,160 @@
+[gd_scene load_steps=15 format=3 uid="uid://bvxejlwxmmojs"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_38fqw"]
+[ext_resource type="Texture2D" uid="uid://2n5mfldwcme8" path="res://assets/graphics/player/player.png" id="2_t8fbu"]
+[ext_resource type="Texture2D" uid="uid://b8xgr7lys5p8w" path="res://assets/smoke.png" id="3_7y8co"]
+[ext_resource type="Texture2D" uid="uid://cdueihj6pirme" path="res://assets/graphics/player/Ojo_Spritesheet.png" id="4_b20mq"]
+[ext_resource type="Texture2D" uid="uid://bi8bcj0ygcssv" path="res://assets/graphics/player/ojo_animation/Ojo1.png" id="5_jsqnm"]
+[ext_resource type="Texture2D" uid="uid://dhhafud2u2d37" path="res://assets/graphics/player/ojo_animation/Ojo-mads-garje.png" id="6_jdhis"]
+[ext_resource type="Texture2D" uid="uid://clq15kkdypwgb" path="res://assets/graphics/player/ojo_animation/Ojo2.png" id="6_yeo7n"]
+[ext_resource type="Texture2D" uid="uid://cgisrvp7j0cim" path="res://assets/graphics/player/ojo_animation/Ojo3.png" id="7_uil5q"]
+[ext_resource type="Texture2D" uid="uid://dmcx4hv0pi01w" path="res://assets/graphics/player/ojo_animation/Ojo-face-light.png" id="7_w74q6"]
+[ext_resource type="Texture2D" uid="uid://bm4mahxc4eky4" path="res://assets/graphics/player/ojo_animation/Ojo4.png" id="8_q8c42"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aek1f"]
+radius = 62.0
+height = 124.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aury5"]
+lifetime_randomness = 0.02
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 0.01
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+velocity_pivot = Vector3(500, 0, 0)
+direction = Vector3(300, 0, 0)
+spread = 49.065
+initial_velocity_min = 20.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.2
+scale_over_velocity_min = 0.2
+scale_over_velocity_max = 0.3
+color = Color(0.995572, 0.949556, 0.949556, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fsjlj"]
+polygon = PackedVector2Array(53, -26, 66, -21, 80, -21, 94, -17, 105, -12, 125, -14, 134, -13, 136, -3, 130, -1, 121, -1, 112, 0, 99, 3, 91, 4, 70, 15, 65, 16, 58, 23, 51, 31, 45, 40, 23, 58, 12, 63, 0, 67, -18, 66, -28, 61, -42, 50, -50, 34, -54, 17, -59, 3, -59, -12, -59, -19, -54, -29, -45, -45, -40, -58, -28, -65, -1, -60, 10, -53, 20, -46, 34, -36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a16hn"]
+animations = [{
+"frames": [{
+"duration": 0.3,
+"texture": ExtResource("5_jsqnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w74q6")
+}, {
+"duration": 2.5,
+"texture": ExtResource("6_jdhis")
+}],
+"loop": false,
+"name": &"standing_fire",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("5_jsqnm")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_yeo7n")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_uil5q")
+}, {
+"duration": 1.5,
+"texture": ExtResource("8_q8c42")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 31
+script = ExtResource("1_38fqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_aek1f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(38, 0)
+rotation = 1.5708
+texture = ExtResource("2_t8fbu")
+
+[node name="AutoShootTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="GrenadeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="LaserStartPositions" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(175, -18)
+
+[node name="Marker2D2" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(159, -7)
+
+[node name="Marker2D3" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(155, -27)
+
+[node name="GrenadeStartPositions" type="Node2D" parent="."]
+position = Vector2(58, -41)
+
+[node name="Marker2D" type="Marker2D" parent="GrenadeStartPositions"]
+position = Vector2(56, 43)
+
+[node name="Marker2D2" type="Marker2D" parent="GrenadeStartPositions"]
+position = Vector2(66, 38)
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Particles"]
+modulate = Color(0.242031, 0.227661, 0.227661, 0.556863)
+position = Vector2(144.114, -22.8323)
+emitting = false
+amount = 3
+amount_ratio = 0.2359
+process_material = SubResource("ParticleProcessMaterial_aury5")
+texture = ExtResource("3_7y8co")
+lifetime = 0.5
+one_shot = true
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Particles"]
+modulate = Color(0.23, 0.1127, 0.1127, 0.239216)
+position = Vector2(145.612, -0.357727)
+emitting = false
+amount = 2
+amount_ratio = 0.5849
+process_material = SubResource("ParticleProcessMaterial_aury5")
+texture = ExtResource("3_7y8co")
+lifetime = 0.2
+one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(13, -5)
+occluder = SubResource("OccluderPolygon2D_fsjlj")
+
+[node name="Ojo" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_b20mq")
+hframes = 2
+vframes = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(44, -5.96046e-08)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_a16hn")
+animation = &"standing_fire"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="timeout" from="AutoShootTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="GrenadeTimer" to="." method="_on_grenade_timer_timeout"]

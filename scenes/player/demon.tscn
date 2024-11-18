@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqvep1yb8xwqo"]
+
+[ext_resource type="Script" path="res://scenes/player/demon.gd" id="1_3k81j"]
+[ext_resource type="Texture2D" uid="uid://dilhw3pirt0yy" path="res://assets/graphics/enemies/demon.png" id="1_sb3xg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lrife"]
+radius = 115.017
+
+[node name="Demon" type="CharacterBody2D"]
+script = ExtResource("1_3k81j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, -60)
+texture = ExtResource("1_sb3xg")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_lrife")
+metadata/_edit_lock_ = true

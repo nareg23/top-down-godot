@@ -1,0 +1,181 @@
+[gd_scene load_steps=16 format=4 uid="uid://0ks1y6vnfm7b"]
+
+[ext_resource type="PackedScene" uid="uid://b7ikao2javdpu" path="res://scenes/level/level.tscn" id="1_1n8r0"]
+[ext_resource type="Script" path="res://scenes/level/inside.gd" id="2_sk61d"]
+[ext_resource type="TileSet" uid="uid://botssa67qs2wk" path="res://scenes/level/tile_sets/floor.tres" id="3_5668r"]
+[ext_resource type="Texture2D" uid="uid://djv8vudb0d8d1" path="res://assets/graphics/ground/dirt.png" id="3_w2ach"]
+[ext_resource type="TileSet" uid="uid://b3ly5581j3cii" path="res://scenes/level/tile_sets/outer_walls.tres" id="4_vtrf4"]
+[ext_resource type="TileSet" uid="uid://dtvw0ud1bopai" path="res://scenes/level/tile_sets/inner_walls.tres" id="5_p5pxb"]
+[ext_resource type="PackedScene" uid="uid://c8dh7ercwwhnh" path="res://scenes/objects/simple_light.tscn" id="6_kap58"]
+[ext_resource type="PackedScene" uid="uid://swu4t0oac3ev" path="res://scenes/objects/wall_light.tscn" id="7_fm4fa"]
+[ext_resource type="Texture2D" uid="uid://b34xtclrtfqxr" path="res://assets/graphics/lights/textures/circle.png" id="7_tdd45"]
+[ext_resource type="PackedScene" uid="uid://bek6b17krsc5j" path="res://scenes/objects/light_fan_animation.tscn" id="9_edg2j"]
+[ext_resource type="Texture2D" uid="uid://dgpgsl7hdjjwi" path="res://assets/graphics/lights/overlays/infrastructure.png" id="10_imol2"]
+[ext_resource type="Texture2D" uid="uid://ddh1uyydfr33n" path="res://assets/graphics/lights/overlays/hole.png" id="11_epgiu"]
+[ext_resource type="Texture2D" uid="uid://cbpi0sf5qj86c" path="res://assets/graphics/lights/overlays/lattice.png" id="12_l2o3j"]
+[ext_resource type="PackedScene" uid="uid://w884rpub7f5o" path="res://scenes/items/item.tscn" id="14_8wuie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44e6m"]
+size = Vector2(1631, 331.5)
+
+[node name="Inside" instance=ExtResource("1_1n8r0")]
+script = ExtResource("2_sk61d")
+
+[node name="Ground" parent="." index="1"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" index="0"]
+texture_repeat = 2
+position = Vector2(2080.5, -800.25)
+scale = Vector2(1.79758, 1.89687)
+texture = ExtResource("3_w2ach")
+region_enabled = true
+region_rect = Rect2(-5635.99, -3000.92, 10340.5, 6046.75)
+
+[node name="Floor" type="TileMapLayer" parent="Ground" index="1"]
+tile_map_data = PackedByteArray("AAAAAAAAAQABAAEAAAABAAAAAQABAAEAAAACAAAAAQABAAEAAAADAAAAAQABAAEAAAAEAAAAAQABAAEAAAAFAAAAAQABAAEAAAAGAAAAAQABAAEAAAAGAP//AQABAAEAAAAFAP//AQABAAEAAAAEAP//AQABAAEAAAADAP//AQABAAEAAAACAP//AQABAAEAAAABAP//AQABAAEAAAAAAP//AQABAAEAAAAAAP7/AQABAAEAAAABAP7/AQABAAEAAAACAP7/AQABAAEAAAADAP7/AQABAAEAAAAEAP7/AQABAAEAAAAFAP7/AQABAAEAAAAGAP7/AQABAAEAAAAHAP7/AQABAAEAAAAHAP//AQABAAEAAAAHAAAAAQABAAEAAAAIAAAAAQABAAEAAAAIAP//AQABAAEAAAAIAP7/AQABAAEAAAAJAP7/AQABAAEAAAAKAP7/AQABAAEAAAAKAP//AQABAAEAAAAJAP//AQABAAEAAAAJAAAAAQABAAEAAAAKAAAAAQABAAEAAAALAAAAAQABAAEAAAAMAAAAAQABAAEAAAAMAP//AQABAAEAAAAMAP7/AQABAAEAAAALAP7/AQABAAEAAAALAP//AQABAAEAAAAMAP3/AQABAAEAAAALAP3/AQABAAEAAAAKAP3/AQABAAEAAAAJAP3/AQABAAEAAAAIAP3/AQABAAEAAAAHAP3/AQABAAEAAAAGAP3/AQABAAEAAAAFAP3/AQABAAEAAAAEAP3/AQABAAEAAAADAP3/AQABAAEAAAACAP3/AQABAAEAAAABAP3/AQABAAEAAAAAAP3/AQABAAEAAAD//wAAAQABAAEAAAD/////AQABAAEAAAD///7/AQABAAEAAAD///3/AQABAAEAAAD+//3/AQABAAEAAAD9//3/AQABAAEAAAD8//3/AQABAAEAAAD8//7/AQABAAEAAAD7//7/AQABAAEAAAD7////AQABAAEAAAD7/wAAAQABAAEAAAD8/wAAAQABAAEAAAD9/wAAAQABAAEAAAD+/wAAAQABAAEAAAD+////AQABAAEAAAD+//7/AQABAAEAAAD9//7/AQABAAEAAAD9////AQABAAEAAAD8////AQABAAEAAAD7//3/AQABAAEAAAD7//z/AQABAAEAAAD7//v/AQABAAEAAAD7//r/AQABAAEAAAD8//r/AQABAAEAAAD8//n/AQABAAEAAAD9//n/AQABAAEAAAD+//n/AQABAAEAAAD+//r/AQABAAEAAAD///r/AQABAAEAAAAAAPr/AQABAAEAAAABAPr/AQABAAEAAAACAPr/AQABAAEAAAADAPr/AQABAAEAAAAEAPr/AQABAAEAAAAFAPr/AQABAAEAAAAGAPr/AQABAAEAAAAHAPr/AQABAAEAAAAIAPr/AQABAAEAAAAJAPr/AQABAAEAAAAJAPv/AQABAAEAAAAIAPv/AQABAAEAAAAHAPv/AQABAAEAAAAGAPv/AQABAAEAAAAFAPv/AQABAAEAAAAEAPv/AQABAAEAAAADAPv/AQABAAEAAAACAPv/AQABAAEAAAABAPv/AQABAAEAAAAAAPv/AQABAAEAAAD///v/AQABAAEAAAD+//v/AQABAAEAAAD9//v/AQABAAEAAAD8//v/AQABAAEAAAD9//r/AQABAAEAAAD9//z/AQABAAEAAAD+//z/AQABAAEAAAD///z/AQABAAEAAAAAAPz/AQABAAEAAAABAPz/AQABAAEAAAACAPz/AQABAAEAAAD8//z/AQABAAEAAAADAPz/AQABAAEAAAAEAPz/AQABAAEAAAAFAPz/AQABAAEAAAAGAPz/AQABAAEAAAAHAPz/AQABAAEAAAAIAPz/AQABAAEAAAAJAPz/AQABAAEAAAAKAPz/AQABAAEAAAALAPz/AQABAAEAAAAMAPz/AQABAAEAAAANAPz/AQABAAEAAAAOAPz/AQABAAEAAAAOAP3/AQABAAEAAAAPAP3/AQABAAEAAAAPAP7/AQABAAEAAAAPAP//AQABAAEAAAAOAP//AQABAAEAAAAOAP7/AQABAAEAAAANAP3/AQABAAEAAAANAP7/AQABAAEAAAANAP//AQABAAEAAAANAAAAAQABAAEAAAAOAAAAAQABAAEAAAAPAAAAAQABAAEAAAAPAPz/AQABAAEAAAAKAPr/AQABAAEAAAAKAPv/AQABAAEAAAALAPv/AQABAAEAAAAMAPv/AQABAAEAAAANAPv/AQABAAEAAAAOAPv/AQABAAEAAAAPAPv/AQABAAEAAAAPAPr/AQABAAEAAAAOAPr/AQABAAEAAAANAPr/AQABAAEAAAAMAPr/AQABAAEAAAALAPr/AQABAAEAAAD7//n/AQABAAEAAAD+//j/AQABAAEAAAD+//f/AQABAAEAAAD+//b/AQABAAEAAAD+//X/AQABAAEAAAD9//X/AQABAAEAAAD8//X/AQABAAEAAAD7//X/AQABAAEAAAD7//b/AQABAAEAAAD7//f/AQABAAEAAAD7//j/AQABAAEAAAD8//j/AQABAAEAAAD9//j/AQABAAEAAAD9//f/AQABAAEAAAD8//f/AQABAAEAAAD9//b/AQABAAEAAAD8//b/AQABAAEAAAAEAPn/AQABAAEAAAAEAPj/AQABAAEAAAAEAPf/AQABAAEAAAAEAPb/AQABAAEAAAAEAPX/AQABAAEAAAAFAPX/AQABAAEAAAAGAPX/AQABAAEAAAAHAPX/AQABAAEAAAAIAPX/AQABAAEAAAAJAPX/AQABAAEAAAAKAPX/AQABAAEAAAALAPX/AQABAAEAAAAMAPX/AQABAAEAAAANAPX/AQABAAEAAAAOAPb/AQABAAEAAAAPAPb/AQABAAEAAAAPAPf/AQABAAEAAAAPAPj/AQABAAEAAAAPAPn/AQABAAEAAAAPAPX/AQABAAEAAAAOAPX/AQABAAEAAAANAPb/AQABAAEAAAAMAPb/AQABAAEAAAALAPb/AQABAAEAAAAKAPb/AQABAAEAAAAJAPb/AQABAAEAAAAIAPb/AQABAAEAAAAHAPb/AQABAAEAAAAGAPb/AQABAAEAAAAFAPb/AQABAAEAAAAFAPf/AQABAAEAAAAGAPf/AQABAAEAAAAHAPf/AQABAAEAAAAIAPf/AQABAAEAAAAJAPf/AQABAAEAAAAKAPf/AQABAAEAAAALAPf/AQABAAEAAAAMAPf/AQABAAEAAAANAPf/AQABAAEAAAAOAPf/AQABAAEAAAAJAPj/AQABAAEAAAAIAPj/AQABAAEAAAAHAPj/AQABAAEAAAAKAPj/AQABAAEAAAALAPj/AQABAAEAAAAMAPj/AQABAAEAAAANAPj/AQABAAEAAAAOAPj/AQABAAEAAAAOAPn/AQABAAEAAAANAPn/AQABAAEAAAAMAPn/AQABAAEAAAALAPn/AQABAAEAAAAKAPn/AQABAAEAAAAGAPj/AQABAAEAAAAFAPj/AQABAAEAAAAIAPn/AQABAAEAAAAHAPn/AQABAAEAAAAGAPn/AQABAAEAAAAFAPn/AQABAAEAAAAJAPn/AQABAAEAAAD6/wAAAQAAAAEAAAD6////AQAAAAEAAAD6//7/AQAAAAEAAAD6//3/AQAAAAEAAAD6//z/AQAAAAEAAAD6//v/AQAAAAEAAAD6//r/AQAAAAEAAAD6//n/AQAAAAEAAAD6//j/AQAAAAEAAAD6//f/AQAAAAEAAAD6//b/AQAAAAEAAAD6//X/AQAAAAEAAAD6//T/AQAAAAAAAAD7//T/AQABAAAAAAD8//T/AQABAAAAAAD9//T/AQABAAAAAAD+//T/AQABAAAAAAD///T/AQACAAAAAAD///X/AQACAAEAAAD///b/AQACAAEAAAD///f/AQACAAEAAAD///j/AQACAAEAAAD///n/AQAAAAUAAAAAAPn/AQABAAAAAAABAPn/AQABAAAAAAACAPn/AQABAAAAAAADAPn/AQABAAUAAAADAPj/AQAAAAEAAAADAPf/AQAAAAEAAAADAPb/AQAAAAEAAAADAPX/AQAAAAEAAAADAPT/AQAAAAAAAAAEAPT/AQABAAAAAAAFAPT/AQABAAAAAAAGAPT/AQABAAAAAAAHAPT/AQABAAAAAAAIAPT/AQABAAAAAAAJAPT/AQABAAAAAAAKAPT/AQABAAAAAAALAPT/AQABAAAAAAAMAPT/AQABAAAAAAANAPT/AQABAAAAAAAOAPT/AQABAAAAAAAPAPT/AQABAAAAAAAQAPT/AQACAAAAAAAQAPX/AQACAAEAAAAQAPb/AQACAAEAAAAQAPf/AQACAAEAAAAQAPj/AQACAAEAAAAQAPn/AQACAAEAAAAQAPr/AQACAAEAAAAQAPv/AQACAAEAAAAQAPz/AQACAAEAAAAQAP3/AQACAAEAAAAQAP7/AQACAAEAAAAQAP//AQACAAEAAAAQAAAAAQACAAEAAAAQAAEAAQACAAIAAAAPAAEAAQABAAIAAAAOAAEAAQABAAIAAAANAAEAAQABAAIAAAAMAAEAAQABAAIAAAALAAEAAQABAAIAAAAKAAEAAQABAAIAAAAJAAEAAQABAAIAAAAIAAEAAQABAAIAAAAHAAEAAQABAAIAAAAGAAEAAQABAAIAAAAFAAEAAQABAAIAAAAEAAEAAQABAAIAAAD+/wEAAQABAAIAAAD9/wEAAQABAAIAAAD8/wEAAQABAAIAAAD7/wEAAQABAAIAAAD6/wEAAQAAAAIAAAADAAEAAQABAAIAAAA=")
+tile_set = ExtResource("3_5668r")
+
+[node name="outerWalls" type="TileMapLayer" parent="Ground" index="2"]
+position = Vector2(2, 0)
+tile_map_data = PackedByteArray("AAD6////AAADAAEAAAD6//7/AAADAAEAAAD6//3/AAADAAEAAAD6//z/AAADAAEAAAD6//v/AAADAAEAAAD6//r/AAADAAEAAAD6//n/AAADAAEAAAD6//j/AAADAAEAAAD6//f/AAADAAEAAAD6//b/AAADAAEAAAD6//X/AAADAAEAAAD6//T/AAADAAAAAAD7//T/AAAEAAAAAAD8//T/AAAEAAAAAAD9//T/AAAEAAAAAAD+//T/AAAEAAAAAAD///T/AAAFAAAAAAD///X/AAADAAEAAAD///b/AAADAAEAAAD///f/AAADAAEAAAD///j/AAADAAEAAAD///n/AAADAAIAAAAAAPn/AAAEAAIAAAABAPn/AAAEAAIAAAACAPn/AAAEAAIAAAADAPn/AAAFAAIAAAADAPj/AAAFAAEAAAADAPf/AAAFAAEAAAADAPb/AAAFAAEAAAADAPX/AAAFAAEAAAADAPT/AAADAAAAAAAEAPT/AAAEAAAAAAAFAPT/AAAEAAAAAAAGAPT/AAAEAAAAAAAHAPT/AAAEAAAAAAAIAPT/AAAEAAAAAAAJAPT/AAAEAAAAAAAKAPT/AAAEAAAAAAALAPT/AAAEAAAAAAAMAPT/AAAEAAAAAAANAPT/AAAEAAAAAAAOAPT/AAAEAAAAAAAPAPT/AAAEAAAAAAAQAPT/AAAFAAAAAAAQAPX/AAAFAAEAAAAQAPb/AAAFAAEAAAAQAPf/AAAFAAEAAAAQAPj/AAAFAAEAAAAQAPn/AAAFAAEAAAAQAPr/AAAFAAEAAAAQAPv/AAAFAAEAAAAQAPz/AAAFAAEAAAAQAP3/AAAFAAEAAAAQAP7/AAAFAAEAAAAQAP//AAAFAAEAAAAQAAAAAAAFAAEAAAAQAAEAAAAFAAIAAAAPAAEAAAAEAAIAAAAOAAEAAAAEAAIAAAANAAEAAAAEAAIAAAAMAAEAAAAEAAIAAAALAAEAAAAEAAIAAAAKAAEAAAAEAAIAAAAJAAEAAAAEAAIAAAAIAAEAAAAEAAIAAAAHAAEAAAAEAAIAAAAGAAEAAAAEAAIAAAAFAAEAAAAEAAIAAAAEAAEAAAAEAAIAAAADAAEAAAAEAAIAAAD6/wEAAAADAAIAAAD7/wEAAAAEAAIAAAD8/wEAAAAEAAIAAAD9/wEAAAAEAAIAAAD+/wEAAAAEAAIAAAD//wEAAAAGAAMAAAD6/wAAAAADAAEAAAACAAEAAAAGAAQAAAA=")
+tile_set = ExtResource("4_vtrf4")
+
+[node name="innerWalls" type="TileMapLayer" parent="Ground" index="3"]
+tile_map_data = PackedByteArray("AAADAAEAAAAFAAgAAAADAAAAAAABAAYAAAADAP3/AAAAAAcAAAAEAP3/AAAAAAYAAAAFAP3/AAAAAAYAAAADAP7/AAABAAYAAAADAP//AAABAAYAAAAQAP3/AAAGAAcAAAAJAP3/AAACAAcAAAAMAP3/AAAAAAYAAAANAP3/AAAAAAYAAAAOAP3/AAAAAAYAAAAPAP3/AAAAAAYAAAAJAAAAAAABAAYAAAAJAP//AAABAAYAAAAJAP7/AAABAAYAAAAJAAEAAAAFAAgAAAAGAP3/AAAAAAYAAAA=")
+tile_set = ExtResource("5_p5pxb")
+
+[node name="lights" type="Node" parent="." index="2"]
+
+[node name="SimpleLight8" parent="lights" index="0" instance=ExtResource("6_kap58")]
+position = Vector2(-1211, 519)
+rotation = 3.14159
+
+[node name="SimpleLight2" parent="lights" index="1" instance=ExtResource("6_kap58")]
+position = Vector2(-1995, -950)
+rotation = -1.5708
+
+[node name="SimpleLight3" parent="lights" index="2" instance=ExtResource("6_kap58")]
+position = Vector2(-2059, -3486)
+rotation = -1.5708
+
+[node name="SimpleLight7" parent="lights" index="3" instance=ExtResource("6_kap58")]
+position = Vector2(-264, -3534)
+rotation = 1.5708
+
+[node name="SimpleLight4" parent="lights" index="4" instance=ExtResource("6_kap58")]
+position = Vector2(2473, 512)
+rotation = 3.14159
+
+[node name="SimpleLight5" parent="lights" index="5" instance=ExtResource("6_kap58")]
+position = Vector2(5154, 485)
+rotation = 3.14159
+
+[node name="SimpleLight6" parent="lights" index="6" instance=ExtResource("6_kap58")]
+position = Vector2(6367, -201)
+rotation = 1.5708
+
+[node name="WallLight" parent="lights" index="7" instance=ExtResource("7_fm4fa")]
+position = Vector2(3932, -4343)
+rotation = 3.14159
+metadata/_edit_lock_ = true
+
+[node name="WallLight2" parent="lights" index="8" instance=ExtResource("7_fm4fa")]
+position = Vector2(1408, -2397)
+rotation = 3.14159
+
+[node name="player" parent="." index="3"]
+z_index = 0
+position = Vector2(1740.96, -1434.6)
+metadata/_edit_group_ = true
+
+[node name="Camera2D" parent="player" index="10"]
+zoom = Vector2(0.5, 0.5)
+
+[node name="PointLight2D" type="PointLight2D" parent="player" index="11"]
+energy = 0.4
+texture = ExtResource("7_tdd45")
+texture_scale = 1.47
+
+[node name="Roof" type="Node" parent="." index="5"]
+
+[node name="Overlay" type="Sprite2D" parent="Roof" index="0"]
+modulate = Color(0.545098, 0.54902, 0.501961, 0.368627)
+position = Vector2(3131, -1947.5)
+scale = Vector2(2.284, 9.40145)
+texture = ExtResource("10_imol2")
+metadata/_edit_lock_ = true
+
+[node name="Hole" type="Sprite2D" parent="Roof" index="1"]
+modulate = Color(1, 1, 1, 0.219608)
+position = Vector2(-969, -1910)
+scale = Vector2(7.87444, 7.87444)
+texture = ExtResource("11_epgiu")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Roof" index="2"]
+modulate = Color(1, 1, 1, 0.0470588)
+position = Vector2(6075, -726)
+scale = Vector2(2.47853, 2.47853)
+texture = ExtResource("12_l2o3j")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Roof" index="3"]
+modulate = Color(1, 1, 1, 0.0470588)
+position = Vector2(5348, -733)
+scale = Vector2(2.47853, 2.47853)
+texture = ExtResource("12_l2o3j")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Roof" index="4"]
+modulate = Color(1, 1, 1, 0.0470588)
+position = Vector2(5967, -2933)
+scale = Vector2(2.47853, 2.47853)
+texture = ExtResource("12_l2o3j")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Roof" index="5"]
+modulate = Color(1, 1, 1, 0.0470588)
+position = Vector2(1831, -2899)
+scale = Vector2(2.47853, 2.47853)
+texture = ExtResource("12_l2o3j")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="Roof" index="6"]
+modulate = Color(1, 1, 1, 0.0470588)
+position = Vector2(4477, -2933)
+scale = Vector2(2.47853, 2.47853)
+texture = ExtResource("12_l2o3j")
+metadata/_edit_lock_ = true
+
+[node name="LightFanAnimation2" parent="Roof" index="7" instance=ExtResource("9_edg2j")]
+position = Vector2(4479, -1736)
+scale = Vector2(1.5, 1.5)
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="LightFanAnimation" parent="Roof" index="8" instance=ExtResource("9_edg2j")]
+position = Vector2(1329, -1775)
+scale = Vector2(1.5, 1.5)
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="DirectionalLight2D2" type="DirectionalLight2D" parent="." index="6"]
+color = Color(0.540732, 0.526407, 0.526407, 0.721569)
+blend_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="ExitGate" type="Area2D" parent="." index="7"]
+position = Vector2(-11, 224)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGate" index="0"]
+position = Vector2(448, 258)
+shape = SubResource("RectangleShape2D_44e6m")
+
+[node name="Item" parent="." index="9" instance=ExtResource("14_8wuie")]
+position = Vector2(892.085, -1561.22)
+
+[connection signal="body_entered" from="ExitGate" to="." method="_on_exit_gate_body_entered"]

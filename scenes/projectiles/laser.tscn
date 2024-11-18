@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=3 uid="uid://busyjefvvnydo"]
+
+[ext_resource type="Texture2D" uid="uid://bcokuscsiyw72" path="res://assets/graphics/projectiles/blue.png" id="1_fpbdh"]
+[ext_resource type="Script" path="res://scenes/projectiles/laser.gd" id="1_p0wqh"]
+[ext_resource type="Texture2D" uid="uid://b34xtclrtfqxr" path="res://assets/graphics/lights/textures/circle.png" id="3_c5yoy"]
+[ext_resource type="Texture2D" uid="uid://c1qpjed04nrma" path="res://assets/shant/Orange-laser.png" id="3_x0avc"]
+[ext_resource type="Texture2D" uid="uid://blqt2ffncgcaw" path="res://assets/shant/niyake.png" id="5_31elx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hq5sq"]
+radius = 8.0
+height = 84.0
+
+[sub_resource type="Animation" id="Animation_qf06o"]
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Niyake:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_5kdmh"]
+resource_name = "new_laser"
+length = 0.3667
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.14, 1.0, 1.14]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Niyake:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6w5x7"]
+_data = {
+"RESET": SubResource("Animation_qf06o"),
+"new_laser": SubResource("Animation_5kdmh")
+}
+
+[node name="Laser" type="Area2D"]
+scale = Vector2(1.3, 1.3)
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_p0wqh")
+speed = 2500
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_hq5sq")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 38)
+texture = ExtResource("1_fpbdh")
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.53846, 30.7692)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("3_x0avc")
+hframes = 3
+vframes = 3
+frame = 6
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(5.625, 5.25)
+color = Color(1, 0.624503, 0.256669, 1)
+energy = 1.14
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.588235)
+texture = ExtResource("3_c5yoy")
+texture_scale = 0.48
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6w5x7")
+}
+autoplay = "RESET"
+
+[node name="Niyake" type="Sprite2D" parent="."]
+position = Vector2(1.53846, -63.8462)
+texture = ExtResource("5_31elx")
+hframes = 3
+vframes = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_timer_timeout"]
