@@ -11,6 +11,10 @@ size = Vector2(620, 355)
 collision_layer = 4
 collision_mask = 11
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, 3)
+shape = SubResource("RectangleShape2D_5jm4p")
+
 [node name="bed" type="Sprite2D" parent="."]
 texture = ExtResource("1_qjymy")
 
@@ -21,7 +25,3 @@ texture = ExtResource("2_l11wa")
 [node name="smallPillow" type="Sprite2D" parent="."]
 position = Vector2(-236, -1)
 texture = ExtResource("3_oi2wm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_5jm4p")

@@ -133,6 +133,7 @@ closed = false
 polygon = PackedVector2Array(5, 1, 5, 1, 14, -2, 4, -3, 8, -13, 2, -5, 0, -5, -3, -14, -3, -4, -4, -3, -15, -5, -5, 1, -5, 2, -11, 11, -2, 5, 0, 5, 9, 11, 5, 1)
 
 [node name="Grenade" type="RigidBody2D"]
+scale = Vector2(0.96814, 0.739955)
 collision_layer = 8
 collision_mask = 15
 gravity_scale = 0.0

@@ -11,16 +11,11 @@ radius = 91.1976
 [node name="Toilet" instance=ExtResource("1_3xuvr")]
 script = ExtResource("2_smsp6")
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(2, 4)
-shape = SubResource("CircleShape2D_bp3fb")
-metadata/_edit_lock_ = true
-
-[node name="BaseSprite" parent="." index="1"]
+[node name="BaseSprite" parent="." index="0"]
 texture = ExtResource("3_2yvst")
 metadata/_edit_lock_ = true
 
-[node name="TopSprite" parent="." index="2"]
+[node name="TopSprite" parent="." index="1"]
 texture = ExtResource("4_34kbr")
 metadata/_edit_lock_ = true
 
@@ -43,3 +38,8 @@ position = Vector2(3, -29)
 position = Vector2(1, 83)
 
 [node name="Marker2D2" type="Marker2D" parent="SpawnPoints" index="6"]
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(2, 4)
+shape = SubResource("CircleShape2D_bp3fb")
+metadata/_edit_lock_ = true

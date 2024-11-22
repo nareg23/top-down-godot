@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7ikao2javdpu"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ikao2javdpu"]
 
 [ext_resource type="PackedScene" uid="uid://bvxejlwxmmojs" path="res://scenes/player/player.tscn" id="1_gjfm4"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_uvws7"]
 [ext_resource type="PackedScene" uid="uid://cvxbpr2k6serg" path="res://scenes/user_interface/ui.tscn" id="2_nygiw"]
 [ext_resource type="Script" path="res://scenes/user_interface/ui.gd" id="3_0kdo6"]
+[ext_resource type="Texture2D" uid="uid://b34xtclrtfqxr" path="res://assets/graphics/lights/textures/circle.png" id="5_wgmuv"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_uvws7")
@@ -13,12 +14,7 @@ script = ExtResource("3_0kdo6")
 
 [node name="Ground" type="Node2D" parent="."]
 
-[node name="player" parent="." instance=ExtResource("1_gjfm4")]
-position = Vector2(503, 501)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-zoom = Vector2(0.6, 0.6)
-position_smoothing_enabled = true
+[node name="Items" type="Node2D" parent="."]
 
 [node name="Projectiles" type="Node2D" parent="."]
 z_index = 1
@@ -27,6 +23,17 @@ z_index = 1
 color = Color(0.479634, 0.274515, 0.274515, 1)
 blend_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="player" parent="." instance=ExtResource("1_gjfm4")]
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(0.4, 0.4)
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="player"]
+energy = 0.3
+texture = ExtResource("5_wgmuv")
 
 [connection signal="grenade" from="player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="player" to="." method="_on_player_laser"]

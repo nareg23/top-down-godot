@@ -19,7 +19,8 @@ func _on_body_entered(body: Node2D) -> void:
 	#check if method/prop exists.
 	if 'hit' in body: 
 		body.hit()
-	queue_free()
+		queue_free()
+	
 
 
 func _on_timer_timeout() -> void:

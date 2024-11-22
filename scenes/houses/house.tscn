@@ -1,12 +1,19 @@
-[gd_scene load_steps=8 format=4 uid="uid://ck6ha3wkwx0lu"]
+[gd_scene load_steps=15 format=4 uid="uid://ck6ha3wkwx0lu"]
 
 [ext_resource type="Script" path="res://scenes/houses/house.gd" id="1_bdi03"]
 [ext_resource type="TileSet" uid="uid://botssa67qs2wk" path="res://scenes/level/tile_sets/floor.tres" id="2_0blyr"]
 [ext_resource type="PackedScene" uid="uid://c8dh7ercwwhnh" path="res://scenes/objects/simple_light.tscn" id="2_fyf7s"]
+[ext_resource type="Texture2D" uid="uid://bgc10v6f18bvb" path="res://assets/graphics/decals/brushes/brush049.png" id="2_pyqy7"]
+[ext_resource type="Texture2D" uid="uid://cbrcs5hoqxjay" path="res://assets/graphics/decals/brushes/brush056.png" id="3_338lj"]
 [ext_resource type="TileSet" uid="uid://b3ly5581j3cii" path="res://scenes/level/tile_sets/outer_walls.tres" id="3_if8mg"]
 [ext_resource type="PackedScene" uid="uid://swu4t0oac3ev" path="res://scenes/objects/wall_light.tscn" id="4_12nkx"]
+[ext_resource type="Texture2D" uid="uid://bmfoany56yo0f" path="res://assets/graphics/decals/brushes/brush055.png" id="4_c2bcc"]
 [ext_resource type="TileSet" uid="uid://dtvw0ud1bopai" path="res://scenes/level/tile_sets/inner_walls.tres" id="4_sr3wq"]
 [ext_resource type="PackedScene" uid="uid://bek6b17krsc5j" path="res://scenes/objects/light_fan_animation.tscn" id="6_ubb2k"]
+[ext_resource type="PackedScene" uid="uid://52uvkrwvbnxn" path="res://scenes/objects/bed.tscn" id="8_fdx0x"]
+[ext_resource type="PackedScene" uid="uid://bqp55xv7bflhf" path="res://scenes/container/box.tscn" id="9_p5ymu"]
+[ext_resource type="PackedScene" uid="uid://d2vwgnicu3tjf" path="res://scenes/container/toilet.tscn" id="10_re6gu"]
+[ext_resource type="PackedScene" uid="uid://djn4gnvefcl40" path="res://scenes/objects/steam_vent.tscn" id="11_2bned"]
 
 [node name="House" type="Area2D"]
 position = Vector2(1, 0)
@@ -15,7 +22,28 @@ script = ExtResource("1_bdi03")
 metadata/_edit_horizontal_guides_ = [-1098.0]
 metadata/_edit_vertical_guides_ = [-1864.0]
 
+[node name="Decals" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Decals"]
+self_modulate = Color(0.2, 0.048, 0.162, 0.223529)
+position = Vector2(1546, -309)
+scale = Vector2(3.71189, 3.33804)
+texture = ExtResource("2_pyqy7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Decals"]
+self_modulate = Color(0.2, 0.048, 0.162, 0.223529)
+position = Vector2(11, 236)
+texture = ExtResource("3_338lj")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Decals"]
+modulate = Color(0.0315825, 0.00997556, 0.00997556, 1)
+self_modulate = Color(0.2, 0.048, 0.162, 0.223529)
+position = Vector2(-1084, 664)
+texture = ExtResource("4_c2bcc")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(11, 13, 1049, 1253, 150, 1260, -1714, 1253, -1843, 1205, -1931, 1018, -1938, 387, -1943, -436, -1938, -1045, -1783, -1190, 935, -1206, 1946, -1173, 2067, -1002, 2077, 57, 2065, 1063, 1960, 1217, 1848, 1265, 1049, 1251)
 
 [node name="Timer" type="Timer" parent="."]
@@ -25,7 +53,8 @@ one_shot = true
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="floor" type="TileMapLayer" parent="Environment"]
-position = Vector2(-521, -557)
+z_index = -1
+position = Vector2(-524, -557)
 tile_map_data = PackedByteArray("AAAAAAAAAQABAAEAAAABAAAAAQABAAEAAAACAAAAAQABAAEAAAADAAAAAQABAAEAAAAEAAAAAQABAAEAAAAFAAAAAQABAAEAAAAFAAEAAQABAAEAAAAEAAEAAQABAAEAAAADAAEAAQABAAEAAAACAAEAAQABAAEAAAABAAEAAQABAAEAAAAAAAEAAQABAAEAAAD//wEAAQABAAEAAAD+/wEAAQABAAEAAAD9/wEAAQABAAEAAAD9/wAAAQABAAEAAAD+/wAAAQABAAEAAAD//wAAAQABAAEAAAD9/wIAAQABAAEAAAD+/wIAAQABAAEAAAD//wIAAQABAAEAAAAAAAIAAQABAAEAAAABAAIAAQABAAEAAAACAAIAAQABAAEAAAADAAIAAQABAAEAAAAEAAIAAQABAAEAAAAFAAIAAQABAAEAAAD9/wMAAQABAAEAAAD+/wMAAQABAAEAAAD//wMAAQABAAEAAAAAAAMAAQABAAEAAAABAAMAAQABAAEAAAACAAMAAQABAAEAAAADAAMAAQABAAEAAAAEAAMAAQABAAEAAAAFAAMAAQABAAEAAAD9////AQABAAEAAAD+////AQABAAEAAAD/////AQABAAEAAAAAAP//AQABAAEAAAABAP//AQABAAEAAAACAP//AQABAAEAAAADAP//AQABAAEAAAAEAP//AQABAAEAAAAFAP//AQABAAEAAAD9//7/AQABAAAAAAD+//7/AQABAAAAAAD///7/AQABAAAAAAAAAP7/AQABAAAAAAABAP7/AQABAAAAAAACAP7/AQABAAAAAAAEAP7/AQABAAAAAAAFAP7/AQABAAAAAAADAP7/AQABAAAAAAAGAP7/AQACAAAAAAAGAP//AQACAAEAAAAGAAAAAQACAAEAAAAGAAEAAQACAAEAAAAGAAIAAQACAAEAAAAGAAMAAQACAAEAAAAGAAQAAQACAAIAAAADAAQAAQABAAIAAAACAAQAAQABAAIAAAABAAQAAQABAAIAAAAAAAQAAQABAAIAAAD//wQAAQABAAIAAAD+/wQAAQABAAIAAAD9/wQAAQABAAIAAAD8/wQAAQAAAAIAAAD8/wMAAQAAAAEAAAD8/wIAAQAAAAEAAAD8/wEAAQAAAAEAAAD8/wAAAQAAAAEAAAD8////AQAAAAEAAAD8//7/AQAAAAAAAAAEAAQAAQACAAQAAAAFAAQAAQACAAQAAAA=")
 tile_set = ExtResource("2_0blyr")
 
@@ -70,6 +99,34 @@ collision_layer = 4
 [node name="SimpleLight3" parent="Lights" instance=ExtResource("2_fyf7s")]
 position = Vector2(253, -1052)
 collision_layer = 4
+
+[node name="Objects" type="Node2D" parent="."]
+position = Vector2(-1497, -766)
+rotation = 3.14159
+
+[node name="Bed" parent="Objects" instance=ExtResource("8_fdx0x")]
+
+[node name="Bed2" parent="Objects" instance=ExtResource("8_fdx0x")]
+position = Vector2(0.00012207, -500)
+
+[node name="Box" parent="Objects" instance=ExtResource("9_p5ymu")]
+position = Vector2(-76.9998, -1798)
+
+[node name="Box2" parent="Objects" instance=ExtResource("9_p5ymu")]
+position = Vector2(-988, -1286)
+rotation = 3.14159
+
+[node name="Toilet" parent="Objects" instance=ExtResource("10_re6gu")]
+position = Vector2(212, -1415)
+rotation = 1.5708
+
+[node name="SteamVent" parent="Objects" instance=ExtResource("11_2bned")]
+position = Vector2(-3260, 45.9997)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0, 0, 0, 0.0313726)
+energy = 2.68
+blend_mode = 2
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

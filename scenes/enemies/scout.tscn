@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxegwv35nbj07"]
+
+[ext_resource type="Script" path="res://scenes/enemies/scout.gd" id="1_6qfx3"]
+[ext_resource type="Shader" path="res://scenes/enemies/scout.gdshader" id="1_sqltc"]
+[ext_resource type="Texture2D" uid="uid://dodurqyroyjnx" path="res://assets/graphics/enemies/scout.png" id="1_yx75n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_78st5"]
+radius = 47.0425
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38vor"]
+radius = 585.042
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6k5y"]
+shader = ExtResource("1_sqltc")
+shader_parameter/color = Color(0.208088, 0, 0, 1)
+shader_parameter/progress = 0.0
+
+[node name="Scout" type="CharacterBody2D" groups=["Entities", "Scouts"]]
+script = ExtResource("1_6qfx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_78st5")
+
+[node name="AttackRange" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_38vor")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_x6k5y")
+position = Vector2(39, 27)
+rotation = 1.5708
+texture = ExtResource("1_yx75n")
+
+[node name="LaserPositions" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="LaserPositions"]
+position = Vector2(132, 12)
+
+[node name="Marker2D3" type="Marker2D" parent="LaserPositions"]
+position = Vector2(121, -33)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="LaserCooldown" type="Timer" parent="Timers"]
+wait_time = 0.7
+one_shot = true
+
+[node name="InvulnerableTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="Timers/LaserCooldown" to="." method="_on_laser_cooldown_timeout"]
+[connection signal="timeout" from="Timers/InvulnerableTimer" to="." method="_on_invulnerable_timer_timeout"]

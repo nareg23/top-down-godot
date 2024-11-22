@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://devp65qmw8pvq"]
+[gd_scene load_steps=20 format=4 uid="uid://devp65qmw8pvq"]
 
 [ext_resource type="PackedScene" uid="uid://b7ikao2javdpu" path="res://scenes/level/level.tscn" id="1_b2kyn"]
 [ext_resource type="Texture2D" uid="uid://c7shvj3xlt2y8" path="res://assets/graphics/tilesets/soil.png" id="2_4hm18"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://djn4gnvefcl40" path="res://scenes/objects/steam_vent.tscn" id="8_rlp4r"]
 [ext_resource type="PackedScene" uid="uid://ck6ha3wkwx0lu" path="res://scenes/houses/house.tscn" id="10_t0yww"]
 [ext_resource type="PackedScene" uid="uid://busyjefvvnydo" path="res://scenes/projectiles/laser.tscn" id="11_5duyg"]
+[ext_resource type="PackedScene" uid="uid://btcj1yglkwijc" path="res://scenes/projectiles/grenade.tscn" id="14_4c6bj"]
 [ext_resource type="PackedScene" uid="uid://bxegwv35nbj07" path="res://scenes/enemies/scout.tscn" id="15_y5bwu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccj5o"]
@@ -122,10 +123,13 @@ speed = 1250
 [node name="Item" parent="." index="7" instance=ExtResource("3_6mpck")]
 position = Vector2(-124.46, 852.595)
 
-[node name="player" parent="." index="8"]
+[node name="Grenade" parent="." index="8" instance=ExtResource("14_4c6bj")]
+position = Vector2(504, 824)
+
+[node name="player" parent="." index="9"]
 position = Vector2(231.708, 605.314)
 
-[node name="Scout" parent="." index="9" instance=ExtResource("15_y5bwu")]
+[node name="Scout" parent="." index="10" instance=ExtResource("15_y5bwu")]
 position = Vector2(1132, 1456)
 scale = Vector2(0.99685, 1)
 

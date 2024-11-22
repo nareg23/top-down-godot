@@ -22,8 +22,8 @@ TransitionLayer="*res://globals/transition_layer.tscn"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1024
+window/size/viewport_height=680
 
 [input]
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvxejlwxmmojs"]
+[gd_scene load_steps=14 format=3 uid="uid://bvxejlwxmmojs"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_38fqw"]
-[ext_resource type="Texture2D" uid="uid://2n5mfldwcme8" path="res://assets/graphics/player/player.png" id="2_t8fbu"]
 [ext_resource type="Texture2D" uid="uid://b8xgr7lys5p8w" path="res://assets/smoke.png" id="3_7y8co"]
 [ext_resource type="Texture2D" uid="uid://cdueihj6pirme" path="res://assets/graphics/player/Ojo_Spritesheet.png" id="4_b20mq"]
 [ext_resource type="Texture2D" uid="uid://bi8bcj0ygcssv" path="res://assets/graphics/player/ojo_animation/Ojo1.png" id="5_jsqnm"]
@@ -71,7 +70,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["Entities"]]
 z_index = 1
 collision_mask = 31
 script = ExtResource("1_38fqw")
@@ -79,12 +78,6 @@ script = ExtResource("1_38fqw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CapsuleShape2D_aek1f")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(38, 0)
-rotation = 1.5708
-texture = ExtResource("2_t8fbu")
 
 [node name="AutoShootTimer" type="Timer" parent="."]
 wait_time = 0.25
